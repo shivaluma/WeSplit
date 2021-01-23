@@ -1,0 +1,147 @@
+﻿<Window x:Class="WeSplit.NewTrips"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeSplit"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title ="WeSplit" Height="780" Width="1370" WindowStartupLocation="CenterScreen">
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top">
+            <WrapPanel Name="Top" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image Height="40" Width="40" Margin="10,0,5,0" Source="Assets/add_120px.png" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left"></Image>
+                <Label Content="Chuyến đi mới" Height="60" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Foreground="#F95700FF"/>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right">
+                <Image Name="imgSave" Source="Assets/save_120px.png" MouseUp="imgSave_MouseUp" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
+                <Image Name="imgCancel" Source="Assets/cancel_120px.png" MouseUp="imgCancel_MouseUp" Width="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
+            </WrapPanel>
+        </Grid>
+        <Canvas>
+            <!--<TextBox TextWrapping="Wrap" Name="Name" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontSize="18" Width="380" Canvas.Left="20" BorderBrush="#DD000000" CaretBrush="#F95700FF" />-->
+            <TextBox
+                        x:Name="tripName"
+                        FontSize="18"
+                        Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                        DockPanel.Dock="Top"
+                        Width="518"
+                        BorderThickness="0"
+                        materialDesign:HintAssist.Hint="Tên chuyến đi"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                        materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="21" Canvas.Top="21"/>
+            <TextBox 
+                        x:Name="Introduce"
+                        FontSize="18"
+                        TextWrapping="Wrap"
+                        Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                        DockPanel.Dock="Top"
+                        Width="518"
+                        BorderThickness="0"
+                        materialDesign:HintAssist.Hint="Mô tả"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                        materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="21" Canvas.Top="101" Height="150"/>
+            <Border x:Name="Image"
+                    materialDesign:HintAssist.Hint="Image"
+                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                    BorderThickness="1"
+                    Height="295"
+                    CornerRadius="10"
+                    VerticalAlignment="Center" BorderBrush="#F95700FF" Canvas.Left="21" Canvas.Top="365" Width="518">
+                <Border.Background>
+                    <ImageBrush x:Name="imgTrip" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill">
+
+                    </ImageBrush>
+                </Border.Background>
+            </Border>
+            <TextBlock Canvas.Left="21" Canvas.Top="269">Ảnh đại diện</TextBlock>
+            <Border Canvas.Left="21" Canvas.Top="285" Width="518" Height="60" CornerRadius="10" BorderThickness="1" BorderBrush="#F95700FF">
+                <Button x:Name="ChooseImg" Click="ChooseImg_Click" Height="61" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF2B2B2B" FontSize="14" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" Canvas.Left="21" Canvas.Top="601" Margin="0,-2,-1,-1">
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/image_120px.png" Width="50" Height="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></Image>
+                    </WrapPanel>
+                </Button>
+            </Border>
+
+            <TextBox
+                        x:Name="Expenditures"
+                        FontSize="18"
+                        Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                        DockPanel.Dock="Top"
+                        Width="379"
+                        BorderThickness="0"
+                        materialDesign:HintAssist.Hint="Loại chi phí"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                        materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="600" Canvas.Top="21"/>
+            <TextBox 
+                        x:Name="Prices"
+                        FontSize="18"
+                        Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                        DockPanel.Dock="Top"
+                        Width="280"
+                        BorderThickness="0"
+                        TextChanged="Prices_TextChanged"
+                        materialDesign:HintAssist.Hint="Số tiền"
+                        materialDesign:HintAssist.IsFloating="True"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                        materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                        materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="1000" Canvas.Top="21"/>
+            <Image x:Name="imgAddPays" MouseUp="imgAddPays_MouseUp" Source="Assets/add_dollar_120px.png" Width="50" Height="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Canvas.Left="1290" Canvas.Top="21"></Image>
+            <Border Canvas.Left="600" Canvas.Top="101" Width="740" Height="150" CornerRadius="10" BorderThickness="1" BorderBrush="#F95700FF">
+                <ListView Name="listExpenditures" FontSize="18">
+
+                </ListView>
+            </Border>
+            <TextBox 
+                x:Name="memberName"
+                FontSize="18"
+                Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                Width="379"
+                BorderThickness="0"
+                materialDesign:HintAssist.Hint="Tên thành viên"
+                materialDesign:HintAssist.IsFloating="True"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="600" Canvas.Top="285"/>
+            <TextBox
+                x:Name="moneyPaid"
+                FontSize="18"
+                Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                Width="280"
+                TextChanged="moneyPaid_TextChanged"
+                BorderThickness="0"
+                materialDesign:HintAssist.Hint="Tiền đã trả"
+                materialDesign:HintAssist.IsFloating="True"
+                materialDesign:TextFieldAssist.HasClearButton="True"
+                materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                materialDesign:TextFieldAssist.TextFieldCornerRadius="4" Canvas.Left="1000" Canvas.Top="285"/>
+            <Image x:Name="imgAddMember" MouseUp="imgAddMember_MouseUp" Source="Assets/add_user_group_woman_man_120px.png" Width="50" Height="50" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Canvas.Left="1290" Canvas.Top="285"></Image>
+            <Border Canvas.Left="600" Canvas.Top="365" Width="740" Height="296" CornerRadius="10" BorderThickness="1" BorderBrush="#F95700FF">
+                <ListView x:Name="listMembers" FontSize="16">
+
+                </ListView>
+            </Border>
+            <TextBlock Canvas.Left="21" Canvas.Top="350" Text="Xem trước"/>
+            <TextBlock Canvas.Left="600" Canvas.Top="344" Text="Danh sách (người đầu tiên là trưởng nhosm)"/>
+        </Canvas>
+    </DockPanel>
+</Window>

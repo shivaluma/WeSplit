@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="WeSplit.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeSplit"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="710.4" d:DesignWidth="1123.2" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <local:ImagePatchRelativeToAbsoluteConverter x:Key="imagePathConverter"/>
+    </UserControl.Resources>
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect ExpandIn, Duration=0:0:0}">
+        <DockPanel Name="USHome" LastChildFill="True">
+            <Grid DockPanel.Dock="Top">
+                <WrapPanel Name="Top" Height="60" HorizontalAlignment="Left">
+                    <Image Name="TopImg" Height="40" Width="40" Margin="10,0,5,0" Source="Assets/map_120px.png" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left"></Image>
+                    <Label Name="TopLabel" Content="Các chuyến đi" Height="60" FontSize="24" VerticalContentAlignment="Center" HorizontalAlignment="Left" Foreground="#FF484848"/>
+                </WrapPanel>
+                <WrapPanel Height="60" HorizontalAlignment="Right">
+                    <TextBox Name="SearchTexbox"
+                             Margin="0 10 10 0"
+                             materialDesign:HintAssist.Hint="Tìm kiếm..."
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             BorderThickness="2"
+                             Padding="5 0 0 0"
+                             Width="300"
+                             Height="40"
+                             VerticalAlignment="Center" CaretBrush="#FF484848" BorderBrush="#282828" VerticalContentAlignment="Center" FontSize="16" SelectionBrush="#FF215BFF" />
+                    <Image Name="imgSearch" Source="Assets/search_120px.png" Width="40" MouseUp="imgSearch_MouseUp" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Height="40" Margin="0 10 15 0"></Image>
+                </WrapPanel>
+            </Grid>
+            <StackPanel Visibility="Collapsed" Name="Bot" Margin="0,0,30,0" Height="50" DockPanel.Dock="Bottom" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Height="30"
+                    Width="30"
+                    Margin="0 0 100 0"
+                    Name="Prev"
+                    Click="Prev_Click"
+                    Background="#FF34EDB5" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="ChevronLeftCircleOutline" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="#DDFFFFFF" />
+                </Button>
+                <Button
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    Height="30"
+                    Width="30"
+                    Margin="0"
+                    Name="Next"
+                    Click="Next_Click"
+                    Background="#FF34EDB5" BorderBrush="{x:Null}">
+                    <materialDesign:PackIcon Kind="ChevronRightCircleOutline" Width="30" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DDFFFFFF" />
+                </Button>
+            </StackPanel>
+            <Grid Name="Trip">
+                <ListView Name="dataListview" ScrollViewer.VerticalScrollBarVisibility="Hidden" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseLeftButtonUp="dataListview_MouseLeftButtonUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <!--<WrapPanel Margin="5 0 5 0"></WrapPanel>-->
+                            <UniformGrid Columns="3" Rows="1" Margin="5 0 5 0"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Name="responsivetrip" SizeChanged="responsivetrip_SizeChanged" CornerRadius="15,15,15,15" BorderThickness="1">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding Picture, Converter={StaticResource imagePathConverter}}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"></ImageBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <Border CornerRadius="15,15,15,15">
+                                        <Border.Background>
+                                            <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                        </Border.Background>
+                                    </Border>
+                                    <StackPanel Height="205" VerticalAlignment="Top" Margin="5,330,5,5">
+                                        <WrapPanel RenderOptions.BitmapScalingMode="HighQuality">
+                                            <materialDesign:PackIcon Kind="Star" Width="25" Height="25" Foreground="Yellow" />
+                                            <materialDesign:PackIcon Kind="Star" Width="25" Height="25" Foreground="Yellow" />
+                                            <materialDesign:PackIcon Kind="Star" Width="25" Height="25" Foreground="Yellow" />
+                                            <materialDesign:PackIcon Kind="Star" Width="25" Height="25" Foreground="Yellow" />
+                                            <materialDesign:PackIcon Kind="Star" Width="25" Height="25" Foreground="Yellow" />
+                                        </WrapPanel>
+                                        <Label Content="{Binding Name}" FontSize="16" Foreground="White" VerticalContentAlignment="Center" Background="{x:Null}" FontWeight="Bold"></Label>
+                                        <TextBlock Text="{Binding Introduce}" Margin="5 0 5 0" FontSize="14" Foreground="White" TextWrapping="Wrap" Background="{x:Null}" VerticalAlignment="Center" TextAlignment="Justify"></TextBlock>
+                                    </StackPanel>
+                                    <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10">
+                                        <Border Width="40" Height="40" CornerRadius="40" Background="White">
+                                            <Button Name="MapCheck" Click="MapCheck_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                                                <materialDesign:PackIcon Name="Check" Kind="{Binding Icon}" RenderOptions.BitmapScalingMode="HighQuality" Width="35" Height="35" Foreground="Green"/>
+                                            </Button>
+                                        </Border>
+                                    </WrapPanel>
+                                </Grid>
+                            </Border>
+                            <!--<StackPanel Orientation="Horizontal">
+                                <TextBlock TextWrapping="Wrap" Width="266" Height="166"
+                                    Text="{Binding Description}" TextAlignment="Justify" />
+                            </StackPanel>-->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </DockPanel>
+    </materialDesign:TransitioningContent>
+</UserControl>
