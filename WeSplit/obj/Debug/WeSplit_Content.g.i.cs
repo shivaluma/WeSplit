@@ -8,6 +8,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("cash.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/add_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/add_dollar_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/add_user_group_woman_man_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/back-button.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/back.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cancel_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/finish_flag_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/image_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/img_4266.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/man_in_blue_shirt_cash_money_60px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/map_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/menu_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/money_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/note-list.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/pie_chart_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/refresh_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/save_120px.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/search_120px.png")]
 
 
